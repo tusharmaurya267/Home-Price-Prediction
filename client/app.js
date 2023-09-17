@@ -17,43 +17,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         // console.log(location,area,bhk,bathrooms)
         // Send the data to the server for prediction
-        // sendPredictionRequest(location, area, bhk, bathrooms);
+        
+        sendPredictionRequest(location, area, bhk, bathrooms);
 
-        // your server's prediction API endpoint
-        const apiUrl = "http://127.0.0.1:5000/predict_home_price";
-
-        // Create a data object to send in the request body
-        const data = {
-            location: location,
-            area: area,
-            bhk: bhk,
-            bathrooms: bathrooms,
-        };
-
-
-        // Send a POST request to the API endpoint
-        fetch(apiUrl, 
-        //     {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(data), // body data type must match "Content-Type" header
-        // }
-        )
-
-        .then((response) => response.json())
-        .then((result) => {
-            
-            // Display the estimated price on the page
-            console.log(result)
-            const estimatedPrice = document.getElementById("estimatedPrice");
-            estimatedPrice.textContent = result.estimated_price;
-            
-        })
-        .catch((error) => {
-            console.error("Error predicting home price:", error);
-        });
     });
 });
 
@@ -79,61 +45,40 @@ function fetchLocations() {
         });
 }
 
-// function sendPredictionRequest(location, area, bhk, bathrooms) {
-    // Replace with your server's prediction API endpoint
-    // const apiUrl = "http://127.0.0.1:5000/predict_home_price";
+function sendPredictionRequest(location, area, bhk, bathrooms) {
+    // your server's prediction API endpoint
+    const apiUrl = "http://127.0.0.1:5000/predict_home_price";
 
-    // // Create a data object to send in the request body
-    // const data = {
-    //     location: location,
-    //     area: area,
-    //     bhk: bhk,
-    //     bathrooms: bathrooms,
-    // };
+    // Create a data object to send in the request body
+    const data = {
+        location: location,
+        area: area,
+        bhk: bhk,
+        bathrooms: bathrooms,
+    };
 
-    // // console.log(data)
 
-    // // Send a POST request to the API endpoint
-    // fetch(apiUrl, {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(data), // body data type must match "Content-Type" header
-    // })
-    // //     .then((response) => response.json())
-    // //     .catch((error) => {
-    // //         console.error("Error in response", error);
-    // //     })
-    // //     // console.log(result.estimatedPrice)
-    // //     .then((result) => {
-            
-    // //         // Display the estimated price on the page
-    // //         // console.log(result)
-    // //         const estimatedPrice = document.getElementById("estimatedPrice");
-    // //         estimatedPrice.textContent = result.estimated_price;
-            
-    // //     })
-    // //     .catch((error) => {
-    // //         console.error("Error predicting home price:", error);
-    // //     });
-    // fetch(apiUrl)
-    //     .then((response) => response.json())
-    //     // .catch((error) => {
-    //     //     console.error("Error in response", error);
-    //     // })
+    // Send a POST request to the API endpoint
+    fetch(apiUrl, 
+        {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+    }
+    )
 
-    //     // console.log(response)
-    //     .then((result) => {
-            
-    //         // Display the estimated price on the page
-    //         console.log(result)
-    //         const estimatedPrice = document.getElementById("estimatedPrice");
-    //         estimatedPrice.textContent = result.estimated_price;
-            
-    //     })
-    //     .catch((error) => {
-    //         console.error("Error predicting home price:", error);
-    //     });
+    .then((response) => response.json())
+    .then((result) => {
         
-// }
+        // Display the estimated price on the page
+        console.log(result)
+        const estimatedPrice = document.getElementById("estimatedPrice");
+        estimatedPrice.textContent = result.estimated_price;
+        
+    })
+    .catch((error) => {
+        console.error("Error predicting home price:", error);
+    }); 
+}

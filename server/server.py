@@ -29,17 +29,15 @@ def get_locations_names():
 
 @app.route('/predict_home_price', methods=['POST', 'GET'])
 def predict_home_price():
-        total_sqft = 3500
-        location = '1st Phase JP Nagar'
-        bath = 2
-        bhk = 2
-
-
-        # data = request.get_json()
-        # total_sqft = float(request.form['area'])
-        # location = request.form['location']
-        # bhk = int(request.form['bhk'])
-        # bath = int(request.form['bathrooms'])
+        # total_sqft = 3500
+        # location = '1st Phase JP Nagar'
+        # bath = 2
+        # bhk = 2
+        data = request.get_json()
+        location = data['location']
+        total_sqft = float(data['area'])
+        bhk = int(data['bhk'])
+        bath = int(data['bathrooms'])
 
         data_columns = get_data_columns()
 
