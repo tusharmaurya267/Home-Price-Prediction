@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Price Prediction</title>
-   <link rel="stylesheet" href="app.css">
+    <!-- <link rel="stylesheet" href="/client/static/css/app.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/app.css') }}">
 </head>
 <body>
     <h1>Home Price Prediction</h1>
@@ -32,6 +33,7 @@
         <p id="estimatedPrice">---</p>
     </div>
 
-    <script src="app.js"></script>
+    <!-- <script src="/client/app.js"></script> -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>
