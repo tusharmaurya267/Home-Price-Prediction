@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function fetchLocations() {
     // Replace with your API endpoint to fetch locations in JSON format
-    const apiUrl = "http://127.0.0.1:5000/get_location_names";
+    // const apiUrl = "http://127.0.0.1:5000/get_location_names";
+    const apiUrl = "/get_location_names";
 
     fetch(apiUrl)
         .then((response) => response.json())
@@ -47,7 +48,8 @@ function fetchLocations() {
 
 function sendPredictionRequest(location, area, bhk, bathrooms) {
     // your server's prediction API endpoint
-    const apiUrl = "http://127.0.0.1:5000/predict_home_price";
+    // const apiUrl = "http://127.0.0.1:5000/predict_home_price";
+    const apiUrl = "/predict_home_price";
 
     // Create a data object to send in the request body
     const data = {
